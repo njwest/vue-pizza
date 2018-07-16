@@ -4,6 +4,7 @@
 
 This is a fork by Nick West of David Graham's vue-pizza Vue PWA starter app, with pug templates translated into regular ol' HTML tags.
 
+Unpugged with [pughtml.com](https://pughtml.com/) and properly beautified
 > A tasty Vue.js starter project. Clone, remove `vue-pizza` everywhere, and add your own features. Also, read through the wiki.
 
 ## Demo
