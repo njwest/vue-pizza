@@ -1,8 +1,8 @@
 {
   "name": "vue-pizza",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "David Graham <prograhammer@gmail.com>",
+  "description": "A Vue.js starter project",
+  "author": "David Graham <prograhammer@gmail.com>, this fork unpugged by Nick West ;D",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

@@ -1,40 +1,36 @@
-<template lang="pug">
-.my-billing
-
-  Appbar
-
-  v-tabs.elevation-0(dark v-model="currentTab" color="primary")
-    // @TODO: Paths don't matter here, only route names. Make issue to Vuetify.
-    v-tab(v-bind:to="{ name: 'account', path: '/account' }" ripple) Profile
-    v-tab(v-bind:to="{ name: 'billing', path: '/billing' }" ripple) Billing
-    v-tab(v-bind:to="{ name: 'market-link', path: '/market-link' }" ripple) Market Link
-    v-tab(v-bind:to="{ name: 'prem-pts', path: '/prem-pts' }" ripple) Premium Points
-
-  .my-billing__hero
-    img.my-billing__cone(src='~/@/assets/images/traffic-cone.svg' alt='Under Construction')
-    div
-      |work-in-progress
-
+<template>
+  <div class="my-billing">
+    <Appbar></Appbar>
+    <v-tabs class="elevation-0" dark="dark" v-model="currentTab" color="primary">
+      <!-- @TODO: Paths don't matter here, only route names. Make issue to Vuetify.-->
+      <v-tab v-bind:to="{ name: 'account', path: '/account' }" ripple="ripple">Profile</v-tab>
+      <v-tab v-bind:to="{ name: 'billing', path: '/billing' }" ripple="ripple">Billing</v-tab>
+      <v-tab v-bind:to="{ name: 'market-link', path: '/market-link' }" ripple="ripple">Market Link</v-tab>
+      <v-tab v-bind:to="{ name: 'prem-pts', path: '/prem-pts' }" ripple="ripple">Premium Points</v-tab>
+    </v-tabs>
+    <div class="my-billing__hero"><img class="my-billing__cone" src="~/@/assets/images/traffic-cone.svg" alt="Under Construction" />
+      <div>work-in-progress</div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'Billing',
 
-  data () {
+  data() {
     return {
       currentTab: '/billing'
     }
   },
 
-  mounted () {
+  mounted() {
     // this.$store.dispatch('common/updateToolbar', {
     //  elevation: false
     // })
   },
 
-  methods: {
-  }
+  methods: {}
 }
 </script>
 

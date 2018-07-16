@@ -1,13 +1,21 @@
-<template lang="pug">
-  v-app.my-default-layout
-    app-sidebar
-    app-bar
-    v-content(style="padding-top: 48px;")
-      transition(name="slide" mode="out-in")
-        router-view
-    app-footer
-    app-dialog
-    app-snackbar
+<template>
+  <v-app class="my-default-layout">
+    <app-sidebar />
+    <app-bar />
+    <v-content
+      style="padding-top: 48px;"
+    >
+      <transition
+        name="slide"
+        mode="out-in"
+      >
+        <router-view />
+      </transition>
+    </v-content>
+    <app-footer />
+    <app-dialog />
+    <app-snackbar />
+  </v-app>
 </template>
 
 <script>

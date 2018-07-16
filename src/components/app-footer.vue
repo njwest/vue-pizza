@@ -1,6 +1,7 @@
-<template lang="pug">
-  v-footer.my-appfooter(:class="{ 'my-appfooter--sidebar-open': sidebarVisibility }")
-    .grey--text © 2018 Your Company Here
+<template>
+  <v-footer class="my-appfooter" :class="{ 'my-appfooter--sidebar-open': sidebarVisibility }">
+    <div class="grey--text">© 2018 Your Company Here</div>
+  </v-footer>
 </template>
 
 <script>

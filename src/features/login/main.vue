@@ -1,61 +1,45 @@
-<template lang="pug">
-  v-container.my-login(fluid fill-height)
-    v-toolbar(
-      color="primary"
-      flat
-      dark
-      fixed
-      app
-      dense
-    )
-      v-btn(icon)
-        img.my-login__logo(src='~/@/assets/images/logo.svg' alt='VuePizza Logo')
-      v-spacer
-      v-btn(flat)
-        | GitHub
-      v-btn(flat)
-        | Tutorial
-    v-layout(justify-center align-center)
-      v-flex.text-xs-center(xs12 lg6)
-        v-layout(row wrap)
-          v-flex(xs12)
-            .my-login__logo-name
-              img(src='~/@/assets/images/logo-name.svg' alt='VueExample')
-          v-flex(xs12)
-            .my-login__subheading.subheading
-              | Examples by the Slice!
-          v-flex(xs12)
-            v-card.my-login__card
-              v-card-title.my-login__card-title(primary-title)
-                v-avatar(:size="100")
-                  img(src='~/@/assets/images/profile.jpg' alt='Avatar')
-
-              v-card-text
-                v-form
-                  v-text-field(
-                    label='E-mail'
-                    v-model='credentials.username'
-                    required
-                  )
-                  v-text-field(
-                    label='Password'
-                    hint='At least 8 characters'
-                    v-model='credentials.password'
-                    min='8'
-                    :append-icon="passwordHidden ? 'visibility' : 'visibility_off'"
-                    :append-icon-cb='() => (passwordHidden = !passwordHidden)'
-                    :type="passwordHidden ? 'password' : 'text'"
-                    counter=''
-                  )
-
-              v-card-actions.my-login__card-actions
-                v-btn(
-                  :loading="loading"
-                  @click="login()"
-                  block
-                  color='accent'
-                  dark
-                ) Login
+<template>
+  <v-container class="my-login" fluid="fluid" fill-height="fill-height">
+    <v-toolbar color="primary" flat="flat" dark="dark" fixed="fixed" app="app" dense="dense">
+      <v-btn icon="icon"><img class="my-login__logo" src="~/@/assets/images/logo.svg" alt="VuePizza Logo" /></v-btn>
+      <v-spacer></v-spacer>
+      <v-btn flat="flat">GitHub</v-btn>
+      <v-btn flat="flat">Tutorial</v-btn>
+    </v-toolbar>
+    <v-layout justify-center="justify-center" align-center="align-center">
+      <v-flex class="text-xs-center" xs12="xs12" lg6="lg6">
+        <v-layout row="row" wrap="wrap">
+          <v-flex xs12="xs12">
+            <div class="my-login__logo-name">
+              <img src="~/@/assets/images/logo-name.svg" alt="VueExample" />
+            </div>
+          </v-flex>
+          <v-flex xs12="xs12">
+            <div class="my-login__subheading subheading">Examples by the Slice!</div>
+          </v-flex>
+          <v-flex xs12="xs12">
+            <v-card class="my-login__card">
+              <v-card-title class="my-login__card-title" primary-title="primary-title">
+                <v-avatar :size="100">
+                  <img src="~/@/assets/images/profile.jpg" alt="Avatar" />
+                </v-avatar>
+              </v-card-title>
+              <v-card-text>
+                <v-form>
+                  <v-text-field label="E-mail" v-model="credentials.username" required="required"></v-text-field>
+                  <v-text-field label="Password" hint="At least 8 characters" v-model="credentials.password" min="8" :append-icon="passwordHidden ? 'visibility' : 'visibility_off'" :append-icon-cb="() =&gt; (passwordHidden = !passwordHidden)"
+                    :type="passwordHidden ? 'password' : 'text'" counter=""></v-text-field>
+                </v-form>
+              </v-card-text>
+              <v-card-actions class="my-login__card-actions">
+                  <v-btn :loading="loading" @click="login()" block="block" color="accent" dark="dark">Login</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

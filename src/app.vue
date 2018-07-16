@@ -1,7 +1,9 @@
-<template lang="pug">
-  #app
-    component(:is="component")
-      slot
+<template>
+  <div id="app">
+    <component :is="component">
+      <slot/>
+    </component>
+  </div>
 </template>
 
 <script>

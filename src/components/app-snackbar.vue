@@ -1,29 +1,28 @@
-<template lang="pug">
-.my-snackbar
-  v-snackbar(
-    :timeout='$store.state.common.snackbar.timeout'
-    :color='$store.state.common.snackbar.color'
-    v-model='snackbarActive')
-    | {{ $store.state.common.snackbar.text }}
-    v-btn(dark='' flat='' @click.native='snackbarActive = false') Close
+<template>
+  <div class="my-snackbar">
+    <v-snackbar :timeout="$store.state.common.snackbar.timeout" :color="$store.state.common.snackbar.color" v-model="snackbarActive">{{ $store.state.common.snackbar.text }}
+      <v-btn dark="" flat="" @click.native="snackbarActive = false">Close</v-btn>
+    </v-snackbar>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'DefaultSnackbar',
 
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
 
   computed: {
     snackbarActive: {
-      get () {
+      get() {
         return this.$store.state.common.snackbar.show
       },
-      set (val) {
-        this.$store.dispatch('common/updateSnackbar', { show: val })
+      set(val) {
+        this.$store.dispatch('common/updateSnackbar', {
+          show: val
+        })
       }
     }
   }

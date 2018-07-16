@@ -1,11 +1,26 @@
-<template lang="pug">
-v-container.my-wip(fluid fill-height text-xs-center)
-  v-layout(justify-center align-center)
-    v-flex.my-wip__hero(text-xs-center)
-      img.my-wip__cone(src='~/@/assets/images/traffic-cone.svg' alt='Work-in-progress')
-      div
-        |Work-in-progress
-
+<template>
+  <v-container
+    class="my-wip"
+    fluid="fluid"
+    fill-height="fill-height"
+    text-xs-center="text-xs-center"
+  >
+    <v-layout
+      justify-center="justify-center"
+      align-center="align-center"
+    >
+      <v-flex
+        class="my-wip__hero"
+        text-xs-center="text-xs-center">
+        <img
+          class="my-wip__cone"
+          src="~/@/assets/images/traffic-cone.svg"
+          alt="Work-in-progress"
+        >
+        <div>Work-in-progress</div>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

@@ -1,5 +1,9 @@
 # :pizza: Vue Pizza
 
+## Fork Notes
+
+This is a fork by Nick West of David Graham's vue-pizza Vue PWA starter app, with pug templates translated into regular ol' HTML tags.
+
 > A tasty Vue.js starter project. Clone, remove `vue-pizza` everywhere, and add your own features. Also, read through the wiki.
 
 ## Demo
@@ -8,7 +12,7 @@
 
 ## Why?
 
-A lot of starter projects or examples of Vue.js in the wild were: 
+A lot of starter projects or examples of Vue.js in the wild were:
 
 - Outdated.
 - No tutorial or wiki.
@@ -24,4 +28,3 @@ how this starter project was built (which allows you to learn and rebuild this p
 ## Installation
 
 Very simple. See the Installation section in [wiki](https://github.com/prograhammer/vue-pizza/wiki).
-

@@ -1,24 +1,13 @@
-<template lang="pug">
-  .my-loading(v-show="loading || oops")
-    v-progress-circular(
-      v-show="loading"
-      ref="progress"
-      indeterminate
-      v-bind:size="70"
-      v-bind:width="7"
-      color="primary"
-      :style="style"
-    )
-    .my-loading__oops(ref="oops" v-show="!loading" :style="style")
-      img(src='~/@/assets/images/oops.svg' alt='Page Error')
-      div
-        | Oops!
-        br
-        | Something went wrong.
+<template>
+  <div class="my-loading" v-show="loading || oops">
+    <v-progress-circular v-show="loading" ref="progress" indeterminate="indeterminate" v-bind:size="70" v-bind:width="7" color="primary" :style="style"></v-progress-circular>
+    <div class="my-loading__oops" ref="oops" v-show="!loading" :style="style"><img src="~/@/assets/images/oops.svg" alt="Page Error" />
+      <div>Oops!<br/>Something went wrong.</div>
+    </div>
+  </div>
 </template>
 
 <script>
-
 /**
  * We can expand this component later to have props for progress percentage,
  * different messages, and more, if needed.
@@ -53,15 +42,18 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
-      position: { top: '0px', left: '0px' },
+      position: {
+        top: '0px',
+        left: '0px'
+      },
       opacity: this.$options.loaderOpacity
     }
   },
 
   computed: {
-    style () {
+    style() {
       return {
         top: this.position.top,
         left: this.position.left,
@@ -74,7 +66,7 @@ export default {
     /**
      * Watcher to update position after switching to "loading true".
      */
-    loading (val) {
+    loading(val) {
       this.updatePosition()
       this.addTransitionListener()
     },
@@ -82,36 +74,40 @@ export default {
     /**
      * Watcher to update position after switching to "oops true".
      */
-    oops (val) {
+    oops(val) {
       this.updatePosition()
       this.addTransitionListener()
     }
   },
 
-  mounted () {
+  mounted() {
     this.updatePosition()
     this.addTransitionListener()
   },
 
-  beforeDestroy () {
+  beforeDestroy() {
     document.removeEventListener('transitionend', this.updatePosition)
   },
 
   methods: {
-    updatePosition () {
+    updatePosition() {
       // Protect from transition listener that is too old or unnecessary calculation.
       if (!this || (!this.loading && !this.oops)) return
 
       // Update position on the nextTick because "v-show" needs to update first.
       this.$nextTick(() => {
-        const { top, left, opacity } = this.calculatePosition()
+        const {
+          top,
+          left,
+          opacity
+        } = this.calculatePosition()
         this.position.top = top
         this.position.left = left
         this.opacity = opacity
       })
     },
 
-    calculatePosition () {
+    calculatePosition() {
       // Which element to use? Loading progress or "oops" error?
       const el = this.loading ? this.$refs.progress.$el : this.$refs.oops
 
@@ -151,7 +147,7 @@ export default {
      * Update position again after all transitions are done.
      * (Don't care about transitions running after the 2 second mark)
      */
-    addTransitionListener () {
+    addTransitionListener() {
       if (this.$options.transitionAdded) return
 
       document.addEventListener('transitionend', this.updatePosition)

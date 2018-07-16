@@ -1,38 +1,35 @@
-<template lang="pug">
-  v-card.my-profile-address(tile)
-    v-toolbar(card dark color="primary")
-      v-btn(icon @click.native="isActive = false" dark)
-        v-icon close
-      v-toolbar-title Address
-      v-spacer
-      v-toolbar-items
-        v-btn(dark flat @click.native="save()") Save
-      v-menu(bottom right offset-y)
-        v-btn(slot="activator" dark icon)
-          v-icon more_vert
-        v-list
-
-    v-card-text(style="position: relative; max-width: 500px; margin: auto;")
-      loading(:loading="loading" :oops="oops")
-
-      v-form(v-model="valid")
-        // v-text-field(label="Name" v-model="name" :rules="nameRules" :counter="10" required="")
-        // v-text-field(label="E-mail" v-model="email" :rules="emailRules" required="")
-        v-text-field(label="Address Line 1" v-model="address.addressLine1" :rules="rules.addressLine1" required="")
-        v-text-field(label="Address Line 2" v-model="address.addressLine2")
-        v-text-field(label="City" v-model="address.city")
-        v-text-field(label="State/Region" v-model="address.state" :rules="rules.state" required="")
-        v-select(
-          label="Country"
-          v-bind:items="countries"
-          v-model="address.country"
-          required
-          item-value="name"
-          item-text="name"
-          :rules="rules.country"
-        )
-        v-text-field(label="Zipcode" v-model="address.zipcode" :rules="rules.zipcode" required="")
-
+<template>
+  <v-card class="my-profile-address" tile="tile">
+    <v-toolbar card="card" dark="dark" color="primary">
+      <v-btn icon="icon" @click.native="isActive = false" dark="dark">
+        <v-icon>close</v-icon>
+      </v-btn>
+      <v-toolbar-title>Address</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <v-btn dark="dark" flat="flat" @click.native="save()">Save</v-btn>
+      </v-toolbar-items>
+      <v-menu bottom="bottom" right="right" offset-y="offset-y">
+        <v-btn slot="activator" dark="dark" icon="icon">
+          <v-icon>more_vert</v-icon>
+        </v-btn>
+        <v-list></v-list>
+      </v-menu>
+    </v-toolbar>
+    <v-card-text style="position: relative; max-width: 500px; margin: auto;">
+      <loading :loading="loading" :oops="oops"></loading>
+      <v-form v-model="valid">
+        <!-- v-text-field(label="Name" v-model="name" :rules="nameRules" :counter="10" required="")-->
+        <!-- v-text-field(label="E-mail" v-model="email" :rules="emailRules" required="")-->
+        <v-text-field label="Address Line 1" v-model="address.addressLine1" :rules="rules.addressLine1" required=""></v-text-field>
+        <v-text-field label="Address Line 2" v-model="address.addressLine2"></v-text-field>
+        <v-text-field label="City" v-model="address.city"></v-text-field>
+        <v-text-field label="State/Region" v-model="address.state" :rules="rules.state" required=""></v-text-field>
+        <v-select label="Country" v-bind:items="countries" v-model="address.country" required="required" item-value="name" item-text="name" :rules="rules.country"></v-select>
+        <v-text-field label="Zipcode" v-model="address.zipcode" :rules="rules.zipcode" required=""></v-text-field>
+      </v-form>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -50,7 +47,7 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       loading: false,
       showPage: false,
@@ -91,31 +88,31 @@ export default {
 
   computed: {
     isActive: {
-      get () {
+      get() {
         return this.active
       },
-      set (val) {
+      set(val) {
         this.$emit('update:active', val)
       }
     }
   },
 
   watch: {
-    active (val) {
+    active(val) {
       if (val) this.refreshData()
     }
   },
 
-  mounted () {
+  mounted() {
     this.refreshData()
   },
 
   methods: {
-    save () {
+    save() {
       this.isActive = false
     },
 
-    refreshData () {
+    refreshData() {
       this.loading = true
       this.oops = false
 
